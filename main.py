@@ -1,6 +1,6 @@
 # Hier File auswählen und dann zu funtion in anderem file schicken
 from basicDistribution import *
-
+from heatmap import *
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -25,9 +25,11 @@ with open(askopenfilename()) as csv_file:#öffnet das csv-file
         elif row[0] == "Station":
             k = 8
             continue
-        elif row[0] == "Timecodes":
+        elif row[0] == "Timecode":
             k = 4
             continue
         data.append(row)
+
+
 
 basicDistribution(data,k)
