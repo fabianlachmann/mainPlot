@@ -17,7 +17,7 @@ def basicDistribution(data,k):
 
     for row in data:
         for i in range(16):
-            x.append(size[k+i])
+            x.append(size[i])
             y.append(float(row[k+i])* 1000000)# siehe Physik unserer Umwelt Die Atmosphäre S.18 (math.log10(Messgrössen[i][1])-math.log10(Messgrössen[i][0]))
 
         plt.plot(x, y, marker='o')

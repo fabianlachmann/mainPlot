@@ -1,9 +1,11 @@
 # Hier File auswählen und dann zu funtion in anderem file schicken
 from basicDistribution import *
 from heatmap import *
+from plot3D import *
+from QuantrelVal import *
+from mathplot import *
 
-import matplotlib
-import matplotlib.pyplot as plt
+
 import numpy as np
 import csv
 from tkinter import Tk
@@ -26,10 +28,14 @@ with open(askopenfilename()) as csv_file:#öffnet das csv-file
             k = 8
             continue
         elif row[0] == "Timecode":
+            print(row[4])
             k = 4
             continue
         data.append(row)
 
 
 
-basicDistribution(data,k)
+#basicDistribution(data,k)
+#basicheatmap(data,k)
+#plot3D(data,k)
+QuantrelVal(data,k,25,33)

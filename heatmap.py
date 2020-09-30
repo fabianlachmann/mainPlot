@@ -11,7 +11,7 @@ size = [0.46,0.66,0.89,1.15,1.45,1.85,2.55,3.5,4.5,5.75,7.25,9,11,13,15,16.5]
 Messgrössen = [[0.38,0.54],[0.54,0.78],[0.78,1],[1,1.3],[1.3,1.6],[1.6,2.1],[2.1,3],[3,4],[4,5],[5,6.5],[6.5,8],[8,10],[10,12],[12,14],[14,16],[16,100]]
 
 
-def twoDplot(data,k):
+def basicheatmap(data,k):
     #data = data[153:193]
     x = []
     X = []
@@ -21,7 +21,7 @@ def twoDplot(data,k):
     Z = []
 
     #for row in data:
-    #    x.append(float(row[0])+(float(row[k+1])/30)+(float(row[2])/(30*24)))
+    #    x.append(float(row[k-3])+(float(row[k-2])/30)+(float(row[k-1])/(30*24)))
 
     for i in range(len(data)):
         x.append(i)
@@ -48,10 +48,9 @@ def twoDplot(data,k):
 
 
     fig = plt.figure()
-    plt.pcolormesh(Y,X,Z,cmap='jet',norm = matplotlib.colors.LogNorm(),shading='gouraud')
-    plt.xscale('log')
+    plt.pcolormesh(X,Y,Z,cmap='jet',norm = matplotlib.colors.LogNorm())
+    plt.yscale('log')
     plt.ylabel("Measurement",fontsize = 'x-large',fontweight='bold')
     plt.colorbar()
-    plt.legend()
     plt.xlabel("r $[\mu m]$",fontsize= 'x-large',fontweight='bold')
     plt.show()
