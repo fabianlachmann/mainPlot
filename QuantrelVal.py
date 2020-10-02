@@ -23,7 +23,7 @@ def QuantrelVal(data,k,a,b):
         y.append(float(row[k+b]))
         n+=1
 
-    plt.scatter(x, y)
+    plt.plot(x, y,'r--',marker = 's')
 
     # Format Plot
     # plt.xlabel('Diameter $[\mu m]$', fontsize=16)
@@ -31,27 +31,62 @@ def QuantrelVal(data,k,a,b):
     # plt.yscale('log')
     # plt.xscale('log')
     # plt.ylim(0, 10 ** 7)
-    plt.tick_params(axis='both', which='major', labelsize=16)
-    plt.title("n = "+str(n))
+    # plt.tick_params(axis='both', which='major', labelsize=16)
+    # plt.title("n = "+str(n))
+    #
+    # print(x)
+    # print(y)
+    #
+    # xn = np.array(x).reshape((-1,1))
+    # yn = np.array(y)
+    #
+    # model = LinearRegression()
+    # model.fit(xn,yn)
+    # r_sq = model.score(xn,yn)
+    # print(r_sq)
+    # print(model.intercept_)
+    # print(model.coef_)
+    #
+    # xn = np.linspace(0,max(x),100)
+    # yn = model.coef_*xn + model.intercept_
 
-    print(x)
-    print(y)
+    #plt.plot(xn,yn)
 
-    xn = np.array(x).reshape((-1,1))
-    yn = np.array(y)
 
-    model = LinearRegression()
-    model.fit(xn,yn)
-    r_sq = model.score(xn,yn)
-    print(r_sq)
-    print(model.intercept_)
-    print(model.coef_)
-
-    xn = np.linspace(0,max(x),100)
-    yn = model.coef_*xn + model.intercept_
-
-    plt.plot(xn,yn)
     plt.show()
+
+
+
+
+def meanplot(data,k,a):
+    x = []
+    y = []
+    n = 0
+    for row in data:
+        y0 = 0
+        c=0
+        for i in range(16):
+            y0 += float(row[k+i])*size[i]
+            c += float(row[k+i])
+        if c == 0:
+            continue
+        y.append(y0/c)
+        x.append(float(row[k+a]))
+        n+=1
+
+    plt.scatter(x, y)
+    plt.show()
+
+
+def histogram(data,n):
+    x = []
+    for row in data:
+        x.append(float(row[0]))
+
+    plt.hist(x,n)
+    plt.xticks([7,8,9,10])
+    plt.show()
+
 
 
 

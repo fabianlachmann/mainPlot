@@ -2,6 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
+import math
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 from mpl_toolkits import mplot3d

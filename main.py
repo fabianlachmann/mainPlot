@@ -3,7 +3,7 @@ from basicDistribution import *
 from heatmap import *
 from plot3D import *
 from QuantrelVal import *
-from mathplot import *
+#from mathplot import *
 
 
 import numpy as np
@@ -12,6 +12,8 @@ from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 from mpl_toolkits import mplot3d
 from scipy.interpolate import interp2d
+string1 = 'Timecode'
+string2 = 'RelHumidity%'
 
 
 data = []
@@ -22,15 +24,47 @@ with open(askopenfilename()) as csv_file:#öffnet das csv-file
         if row == []:
             continue
         elif row[0] == "Month":
+            print(row[3])
             k = 3
+            for i in range(len(row)):
+                if row[i] == string1:
+                    a = i-k
+                    print(row[a])
+                elif row[i] == string2:
+                    b = i-k
+                    print(row[b])
+
             continue
+
+
         elif row[0] == "Station":
+            print(row[8])
             k = 8
+            for i in range(len(row)):
+                if row[i] == string1:
+                    a = i - k
+                    print(row[a])
+                elif row[i] == string2:
+                    b = i - k
+                    print(row[b])
+
             continue
+
+
         elif row[0] == "Timecode":
             print(row[4])
             k = 4
+            for i in range(len(row)):
+                if row[i] == string1:
+                    a = i - k
+                    print(row[a])
+                elif row[i] == string2:
+                    b = i - k
+                    print(row[b])
+
+
             continue
+
         data.append(row)
 
 
@@ -38,4 +72,6 @@ with open(askopenfilename()) as csv_file:#öffnet das csv-file
 #basicDistribution(data,k)
 #basicheatmap(data,k)
 #plot3D(data,k)
-QuantrelVal(data,k,25,33)
+#QuantrelVal(data,k,a,b)
+histogram(data,100)
+#meanplot(data,k,a)
